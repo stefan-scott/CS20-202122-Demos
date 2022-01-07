@@ -84,4 +84,8 @@ while racer_one.xcor() < 225 and racer_two.xcor() < 225:
             last_pressed = "B"
         
 
+# Race 5 - make another race where the A/B alternating buttons
+# are replaced with Acceremeter positions of LEFT/RIGHT
+
+
 determine_winner()
