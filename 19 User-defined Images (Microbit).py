@@ -41,11 +41,20 @@ dice_six = "44444:" \
            "49094:" \
            "44444" 
 
+dice_images = [dice_one, dice_two, dice_three, dice_four, dice_five, dice_six]
+microbit.display.show(microbit.Image(random.choice(dice_images)))
 
-current_image = microbit.Image(dice_one)
-microbit.display.show(current_image)
+SHAKE_THRESHOLD = -300
+while True:
+    motion = microbit.accelerometer.get_z()
+    print(motion)
+    if motion > SHAKE_THRESHOLD:  #consider this a "shake"
+        microbit.display.show(microbit.Image(random.choice(dice_images)))
+        time.sleep(0.4) # no "shake detect" buffer time
+    time.sleep(0.1)
+    
+    
+    
+    
+    
 
-
-
-
-microbit.display.show(BANANA)
