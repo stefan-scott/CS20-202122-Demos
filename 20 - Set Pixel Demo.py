@@ -36,6 +36,17 @@ def set_pixel(x,y,intensity):
     grid[y][x] = intensity
     show_grid()
 
+def queue_pixel(x,y,intensity):
+    #queue a change for a particular x,y pixel
+    grid[y][x] = intensity
+
+def plot(x,y):
+    #turn on pixel at (x,y) to full brightness
+    set_pixel(x,y,9)
+
+def unplot(x,y):
+    #turn off pixel at (x,y)
+    set_pixel(x,y,0)
 
 def random_sparkle():
     x = random.randint(0,4) # int between 0 - 4
@@ -43,9 +54,19 @@ def random_sparkle():
     intensity = random.randint(0,9)
     set_pixel(x,y,intensity)
     show_grid()
+
+def set_all(intensity):
+    #fill all pixels to level "intensity"
+    for x in range(5):
+        #x: 0, 1, 2, 3, 4
+        for y in range(5):
+            #y: 0, 1, 2, 3, 4
+            queue_pixel(x,y,intensity)
+    show_grid()
     
-while True:
-    random_sparkle()
+set_all(9)
+# while True:
+#     random_sparkle()
     
     
     
