@@ -3,7 +3,7 @@
 # Jan 12, 2022
 # Adding the ability to control specific pixels at (x,y) on the micro:bit
 
-import microbit, random
+import microbit, random, time
 
 #list to represent the 5x5 grid on the micro:bit
 grid = [ [5, 0, 0, 0, 0],
@@ -64,10 +64,51 @@ def set_all(intensity):
             queue_pixel(x,y,intensity)
     show_grid()
     
-set_all(9)
+def fade_effect():
+    #an animation fading full screen fills
+    for cycles in range(5):
+        for brightness in range(10):  #0-9
+            set_all(brightness)
+            time.sleep(0.05)
+            
+        for brightness in range(8,0,-1): #8-1
+            set_all(brightness)
+            time.sleep(0.05)
+    
+#fade_effect()
 # while True:
 #     random_sparkle()
+
+
+# Game Mechanic - driving a player around:
+set_all(0)  #clear the screen
+
+player_x = 2
+player_y = 4 #bottom row
+
+plot(player_x, player_y)
+
+while True:
+    if microbit.accelerometer.get_y() < -500:
+        #forward tilt:
+        if player_y > 0:
+            unplot(player_x, player_y)
+            player_y -= 1
+            plot(player_x, player_y)
+            time.sleep(0.3)
+    # add some similar code for moving down
+            
+    if microbit.button_a.was_pressed():
+        if player_x > 0:
+            unplot(player_x, player_y)
+            player_x -= 1
+            plot(player_x, player_y)
     
+    if microbit.button_b.was_pressed():
+        if player_x < 4:
+            unplot(player_x, player_y)
+            player_x += 1
+            plot(player_x, player_y)
     
     
     
