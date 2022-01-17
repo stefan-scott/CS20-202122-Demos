@@ -12,8 +12,13 @@ def apply_rules(ch):
     else:
         return ch
 
-
-
+def process_string(original_str):
+    #loop though original_str and apply
+    #L-system rules
+    next_str = ""
+    for c in original_str:
+        next_str += apply_rules(c)
+    return next_str
 
 
 
