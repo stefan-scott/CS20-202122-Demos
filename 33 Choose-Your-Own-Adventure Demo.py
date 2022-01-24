@@ -23,8 +23,48 @@ else:
     #User chooses to ride the bus
     print("You miss your stop, and end up at the law offices")
     choice = input("You notice gum on the ground. Do you pick"\
-                   "it up? (yes) (no)")
+                   " it up? (yes) (no)")
     if choice.upper() == "YES":
         item = "Stick of Gum"
         
+#Chapter Three: Which way to go? (at law offices)
+print("You are in a hallway. You can go left or right.")
+direction = input("which way do you go? (left) (right)")
+
+#enforce valid input
+while direction.lower() != "right" and direction.lower() != "left":
+    direction = input("which way do you go? (left) (right)")
+    
+
+if direction.lower() == "right":
+    print("You find your school group. THE END")
+else:
+    #choosing to go left.
+    print("You see a door open just a crack, with the light on")
+    enter = input("Do you go in? (yes) (no)")
+    if enter.upper() == "NO":
+        print("you turn around and find your friends. THE END")
+    else:
+        #rest of the story must be in this branch
+        #endgame 3 - job interview
+        print("You are in a job interview with 1 min to prepare")
+        use_item = input("Do you use your item (yes) (no)")
+        chance = 45
+        
+        #modify based on clothing selection
+        if clothing.lower() == "dressy" or clothing.lower() == "preppy":
+            chance += 25
+        elif clothing.lower() == "super casual":
+            chance -= 30
+        
+        #modify based on item usage
+        if use_item.lower() == "yes":
+            if item.lower() == "stick of gum":
+                chance += 10
+            elif item.lower() == "comb":
+                chance += 20
+            elif item.lower() == "5 dollar bill":
+                chance -= 100  # chance = chance - 100
+            
+    
 
